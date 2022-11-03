@@ -1,0 +1,132 @@
+.products-items-grid .prod_overlay
+    transition-delay: 0.3s
+    transition: transform .3s linear, opacity .3s
+
+.products-items-grid_col_wrap
+    border: 1px solid #b9b9b9
+    padding: 10px 10px 20px
+    border-radius: 5px
+    transition: all 0.5s cubic-bezier(.25,.8,.25,1)
+
+
+.products-items-grid_col_wrap:hover
+    box-shadow: -4px 10px 20px 4px #00000036
+
+.product_img
+    margin: -11px
+
+.product_img img
+    border-radius: 5px 5px 0 0
+
+
+
+
+.bage
+    padding: 8px
+    font-size: 12px
+    text-transform: uppercase
+    display: inline-flex
+    &-accent
+        background-color: #00bfd3
+        color: white
+    &-right-top
+        position: absolute
+        top: 7px
+        right: 7px
+
+.expand-img
+    cursor: pointer
+
+.inverse-wrap
+    margin-left: -10px
+    margin-right: -10px
+img
+    width: 100%
+    height: auto
+body
+    width: 100%
+    padding: 0
+    margin: 0 auto
+    font-family: Roboto
+    color: #787878
+    text-align: center
+    overflow-x: hidden
+    font-size: 16px
+section
+    overflow: hidden
+.wrap
+    width: 100%
+    max-width: 1170px
+    padding: 0 15px
+    margin: 0 auto
+.main-wrap
+    display: flex
+    flex-direction: column
+    min-height: 90vh
+    padding-top: 50px
+
+*
+    box-sizing: border-box
+h1,h2,h3,h4,h5,h6,.title
+    color: #515562
+    margin: 0
+    padding: 20px 0
+    text-transform: capitalize
+
+.title
+    font-size: 20px
+    font-weight: bold
+.logo
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+section
+    padding: 50px 0
+.section-gray
+    background-color: #f9f9f9
+.logo
+    font-weight: bold
+    color: #515562
+    font-size: 20px
+    span
+        color: #00bfd3
+.logo-footer
+    color: #515562
+a
+    text-decoration: none
+    color: inherit
+.btn
+    border: 2px solid white
+    color: white
+    display: inline-block
+    padding: 10px 20px
+    margin-top: 20px
+    text-transform: uppercase
+.btn-active
+    border: 1px solid #515562
+    background-color: #515562
+
+.section_title
+    max-width: 600px
+
+.up-scroll
+    display: none
+    position: fixed
+    right: 20px
+    bottom: 20px
+    cursor: pointer
+    background-color: #565656
+    border-radius: 4px
+    opacity: 0.5
+    transition: 0.2s
+    width: 45px
+    height: 45px
+    align-items: center
+    justify-content: center
+    i
+        font-size: 25px
+        color: white
+        padding: 10px
+    &:hover
+        background-color: #00bfd3
+        opacity: 1
+    &-show
+        display: flex
