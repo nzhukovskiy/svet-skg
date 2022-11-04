@@ -43,6 +43,24 @@ class ProductController extends Controller
     {
         $product = new Product($request->all());
 
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required|min:20',
+            'power' => 'required',
+            'leds_number' => 'required',
+            'mounting_method' => 'required',
+            'ripple' => 'required',
+            'color_temperature' => 'required',
+            'light_flow' => 'required',
+            'color_rendering_index' => 'required',
+            'protection_class' => 'required',
+            'operating_temperature' => 'required',
+            'supply_voltage' => 'required',
+            'guarantee' => 'required',
+            'length' => 'required',
+            'height' => 'required',
+            'width' => 'required'
+        ]);
 
 
         $product->save();
@@ -57,7 +75,7 @@ class ProductController extends Controller
             $product->images()->save($newImage);
         }
         //var_dump($request->pictures);
-        //return redirect()->route("products.show", ["product" => $product->id]);
+        return redirect()->route("products.show", ["product" => $product->id]);
     }
 
     /**

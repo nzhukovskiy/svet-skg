@@ -127,7 +127,13 @@
                 <div class="product_col products-items-grid_col">
                     <a href="{{route("products.show", ["product" => $product->id])}}" class="products-items-grid_col_wrap">
 
-                        <div class="product_img"><img src="{{ Vite::asset('resources/images/products/3.jpg') }}"></div>
+                        <div class="product_img">
+                            @if ($product->images->count() > 0)
+                                <img src="{{Storage::url($product->images[0]->name)}}">
+                            @else
+                                <img src="{{ Vite::asset('resources/images/products/1.jpg') }}">
+                            @endif
+                        </div>
                         <div class="product_title title">{{$product->name}}</div>
                         <div class="bage bage-accent bage-right-top">
                             Лучший выбор
@@ -292,7 +298,8 @@
     </div>
 
     <div class="wrap contact-form">
-        <form class="contact_form">
+        <form method="post" action="{{route("reply")}}" class="contact_form">
+            @csrf
             <div style="width: 100%;">
                 <h2 class="anim_type  anim_type_input">Напишите нам.</h2>
             </div>
@@ -302,28 +309,28 @@
             </div>
             <div class="input-wrap " >
                 <div class="input-ico"><i class="fas fa-envelope"></i></div>
-                <input class="input_mail" name="mail" type="email" placeholder="Введите свой email" autocomplete="email" required>
+                <input class="input_mail" name="email" type="email" placeholder="Введите свой email" autocomplete="email" required>
             </div>
             <div class="input-wrap  " >
                 <div class="input-ico"><i class="fas fa-phone"></i></div>
-                <input class="input_tel" name="tel" type="tel" placeholder="Введите свой номер" required>
+                <input class="input_tel" name="phone" type="tel" placeholder="Введите свой номер" required>
             </div>
             <div class="input-wrap  "  style="flex-basis: 100%">
-                <textarea class="input_message" name="message"  placeholder="Введите свой вопрос"></textarea>
+                <textarea class="input_message" name="question"  placeholder="Введите свой вопрос"></textarea>
             </div>
             <br>
             <label for="type-select">Выберите тип закупки</label>
             <div class="input-wrap  select-wrapper"  style="flex-basis: 100%">
-                <select class="nice-select" name="type-select">
-                    <option>Оптовые закупки</option>
-                    <option>Розничные закупки</option>
+                <select class="nice-select" name="type">
+                    <option value="0">Оптовые закупки</option>
+                    <option value="1">Розничные закупки</option>
                 </select>
             </div>
 
 
             <div class="switch-group">
                 <label class="switch">
-                    <input type="checkbox">
+                    <input type="checkbox" name="subscription">
                     <span class="slider round"></span>
                 </label>
                 <label>Подписаться на рассылку</label>
@@ -333,23 +340,23 @@
                 <p>Оставьте свою оценку</p>
                 <div class="radio-wrap" >
                     <div class="star-group">
-                        <input type="radio" id="first-star" class="radio-button" name="star">
+                        <input type="radio" id="first-star" class="radio-button" name="mark" value="1">
                         <label for="first-star">Одна звезда</label>
                     </div>
                     <div class="star-group">
-                        <input type="radio" id="second-star" class="radio-button" name="star">
+                        <input type="radio" id="second-star" class="radio-button" name="mark" value="2">
                         <label for="second-star">Две звезды</label>
                     </div>
                     <div class="star-group">
-                        <input type="radio" id="third-star" class="radio-button" name="star">
+                        <input type="radio" id="third-star" class="radio-button" name="mark" value="3">
                         <label for="third-star">Три звезды</label>
                     </div>
                     <div class="star-group">
-                        <input type="radio" id="fourth-star" class="radio-button" name="star">
+                        <input type="radio" id="fourth-star" class="radio-button" name="mark" value="4">
                         <label for="fourth-star">Четыре звезды</label>
                     </div>
                     <div class="star-group">
-                        <input type="radio" id="fifth-star" class="radio-button" name="star">
+                        <input type="radio" id="fifth-star" class="radio-button" name="mark" value="5">
                         <label for="fifth-star">Пять звезд</label>
                     </div>
                 </div>

@@ -40,7 +40,13 @@
             <div class="product_col products-items-grid_col">
                 <a href="{{route("products.show", ["product" => $product->id])}}" class="products-items-grid_col_wrap">
 
-                    <div class="product_img"><img src="{{ Vite::asset('resources/images/products/1.jpg') }}"></div>
+                    <div class="product_img">
+                        @if ($product->images->count() > 0)
+                            <img src="{{Storage::url($product->images[0]->name)}}">
+                        @else
+                            <img src="{{ Vite::asset('resources/images/products/1.jpg') }}">
+                        @endif
+                    </div>
                     <div class="product_title title">{{$product->name}}</div>
                     <div class="product_text">
                         {{$product->description}}

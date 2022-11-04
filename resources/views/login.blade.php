@@ -11,9 +11,15 @@
             <input class="input_name" id="name" name="name" type="text" placeholder="Логин" required>
         </div>
         <div class="input-wrap " style="flex-basis: 100%;">
-            <div class="input-ico"><i class="fas fa-envelope"></i></div>
+            <div class="input-ico"><i class="fas fa-key"></i></div>
             <input class="input_mail" name="password" id="leds_number" type="password" placeholder="Пароль" required>
         </div>
+        <div>
+            @foreach ($errors->all() as $message)
+                <div class="error-message">{{$message}}</div>
+            @endforeach
+        </div>
+
 
         <button class="btn btn-active " type="submit" >Войти</button>
     </form>

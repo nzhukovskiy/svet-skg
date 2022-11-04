@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthorizationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,8 @@ Route::get('/login', [AuthorizationController::class, 'show_login'])->name("show
 Route::post('/login', [AuthorizationController::class, 'login'])->name("login");
 Route::get('/register', [AuthorizationController::class, 'show_register'])->name("show_register");
 Route::post('/register', [AuthorizationController::class, 'register'])->name("register");
-Route::get('/admin_panel', [UserController::class, 'show_admin_panel'])->name("admin_panel");
+Route::get('/logout', [AuthorizationController::class, 'logout'])->name("logout");
+Route::get('/admin_panel', [UserController::class, 'show_admin_panel'])->name("admin_panel")->middleware("auth");
+Route::post('/reply', [ReplyController::class, 'store'])->name("reply");
 Route::resource('photos', PhotoController::class);
 Route::resource('products', ProductController::class);

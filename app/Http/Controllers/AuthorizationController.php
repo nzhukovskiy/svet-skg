@@ -22,7 +22,7 @@ class AuthorizationController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => 'Введены некорректные данные',
         ])->onlyInput('email');
     }
 
@@ -32,6 +32,11 @@ class AuthorizationController extends Controller
 
     public function register(Request $request) {
         $user = new User();
+        $request->validate([
+            'name' => 'required|unique:users|min:4|max:255',
+            'email' => 'required|email',
+            'password' => 'required|min:8'
+        ]);
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
@@ -41,5 +46,10 @@ class AuthorizationController extends Controller
 
     public function show_register() {
         return view("register");
+    }
+
+    public function logout() {
+        Auth::logout();
+        return redirect()->route("show_login");
     }
 }

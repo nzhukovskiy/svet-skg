@@ -35,65 +35,145 @@
                 <div class="input-ico"><i class="fas fa-user"></i></div>
                 <input class="input_name" id="name" name="name" type="text" placeholder="Название товара" value="{{$product->name}}" required>
             </div>
+            <div>
+                @foreach ($errors->get("name") as $message)
+                    <div class="error-message">{{$message}}</div>
+                @endforeach
+            </div>
             <div class="input-wrap  "  style="flex-basis: 100%">
                 <textarea class="input_message" id="description" name="description"  placeholder="Описание товара">{{$product->description}}</textarea>
+            </div>
+            <div>
+                @foreach ($errors->get("description") as $message)
+                    <div class="error-message">{{$message}}</div>
+                @endforeach
             </div>
             <div class="input-wrap " style="flex-basis: 100%;">
                 <div class="input-ico"><i class="fas fa-envelope"></i></div>
                 <input class="input_mail" name="power" id="power" type="number" value="{{$product->power}}" placeholder="Мощность" required>
             </div>
-            <div class="input-wrap " style="flex-basis: 100%;">
-                <div class="input-ico"><i class="fas fa-envelope"></i></div>
-                <input class="input_mail" name="leds_number" id="leds_number" type="number" value="{{$product->leds_number}}" placeholder="Количество светодиодов" required>
+            <div>
+                @foreach ($errors->get("power") as $message)
+                    <div class="error-message">{{$message}}</div>
+                @endforeach
             </div>
             <div class="input-wrap " style="flex-basis: 100%;">
                 <div class="input-ico"><i class="fas fa-envelope"></i></div>
+                <input class="input_mail" name="leds_number" id="leds_number" type="number" value="{{$product->leds_number}}" placeholder="Количество светодиодов" required>
+            </div><div>
+                @foreach ($errors->get("leds_number") as $message)
+                    <div class="error-message">{{$message}}</div>
+                @endforeach
+            </div>
+
+            <div class="input-wrap " style="flex-basis: 100%;">
+                <div class="input-ico"><i class="fas fa-envelope"></i></div>
                 <input class="input_mail" name="mounting_method" id="mounting_method" type="text" value="{{$product->mounting_method}}" placeholder="Способ крепления" required>
+            </div>
+            <div>
+                @foreach ($errors->get("mounting_method") as $message)
+                    <div class="error-message">{{$message}}</div>
+                @endforeach
             </div>
             <div class="input-wrap " style="flex-basis: 100%;">
                 <div class="input-ico"><i class="fas fa-envelope"></i></div>
                 <input class="input_mail" name="ripple" id="ripple" type="text" placeholder="Пульсация" value="{{$product->ripple}}" required>
             </div>
+            <div>
+                @foreach ($errors->get("ripple") as $message)
+                    <div class="error-message">{{$message}}</div>
+                @endforeach
+            </div>
             <div class="input-wrap " style="flex-basis: 100%;">
                 <div class="input-ico"><i class="fas fa-envelope"></i></div>
                 <input class="input_mail" name="color_temperature" id="color_temperature" type="text" value="{{$product->color_temperature}}" placeholder="Цветовая температура" required>
+            </div>
+            <div>
+                @foreach ($errors->get("color_temperature") as $message)
+                    <div class="error-message">{{$message}}</div>
+                @endforeach
             </div>
             <div class="input-wrap " style="flex-basis: 100%;">
                 <div class="input-ico"><i class="fas fa-envelope"></i></div>
                 <input class="input_mail" name="light_flow" id="light_flow" type="number" value="{{$product->light_flow}}" placeholder="Световой поток" required>
             </div>
+            <div>
+                @foreach ($errors->get("light_flow") as $message)
+                    <div class="error-message">{{$message}}</div>
+                @endforeach
+            </div>
             <div class="input-wrap " style="flex-basis: 100%;">
                 <div class="input-ico"><i class="fas fa-envelope"></i></div>
                 <input class="input_mail" name="color_rendering_index" id="color_rendering_index" type="text" value="{{$product->color_rendering_index}}" placeholder="Индекс цветопередачи" required>
+            </div>
+            <div>
+                @foreach ($errors->get("color_rendering_index") as $message)
+                    <div class="error-message">{{$message}}</div>
+                @endforeach
             </div>
             <div class="input-wrap " style="flex-basis: 100%;">
                 <div class="input-ico"><i class="fas fa-envelope"></i></div>
                 <input class="input_mail" name="protection_class" id="protection_class" type="text" value="{{$product->protection_class}}" placeholder="Класс защиты" required>
             </div>
+            <div>
+                @foreach ($errors->get("protection_class") as $message)
+                    <div class="error-message">{{$message}}</div>
+                @endforeach
+            </div>
             <div class="input-wrap " style="flex-basis: 100%;">
                 <div class="input-ico"><i class="fas fa-envelope"></i></div>
-                <input class="input_mail" name="operating_temperature" id="operating_temperature" type="text" value="{{$product->operating_temperature}}" placeholder="Температура" required>
+                <input class="input_mail" name="operating_temperature" id="operating_temperature" type="text" value="{{$product->operating_temperature}}" placeholder="Допустимая температура" required>
+            </div>
+            <div>
+                @foreach ($errors->get("operating_temperature") as $message)
+                    <div class="error-message">{{$message}}</div>
+                @endforeach
             </div>
             <div class="input-wrap " style="flex-basis: 100%;">
                 <div class="input-ico"><i class="fas fa-envelope"></i></div>
                 <input class="input_mail" name="supply_voltage" id="supply_voltage" type="text" value="{{$product->supply_voltage}}" placeholder="Напряжение питания" required>
             </div>
+            <div>
+                @foreach ($errors->get("supply_voltage") as $message)
+                    <div class="error-message">{{$message}}</div>
+                @endforeach
+            </div>
             <div class="input-wrap " style="flex-basis: 100%;">
                 <div class="input-ico"><i class="fas fa-envelope"></i></div>
                 <input class="input_mail" name="guarantee" id="guarantee" type="number" value="{{$product->guarantee}}" placeholder="Гарантия, мес." required>
+            </div>
+            <div>
+                @foreach ($errors->get("guarantee") as $message)
+                    <div class="error-message">{{$message}}</div>
+                @endforeach
             </div>
             <div class="input-wrap " style="flex-basis: 100%;">
                 <div class="input-ico"><i class="fas fa-envelope"></i></div>
                 <input class="input_mail" name="length" id="length" type="number" value="{{$product->length}}" placeholder="Длина" required>
             </div>
+            <div>
+                @foreach ($errors->get("length") as $message)
+                    <div class="error-message">{{$message}}</div>
+                @endforeach
+            </div>
             <div class="input-wrap " style="flex-basis: 100%;">
                 <div class="input-ico"><i class="fas fa-envelope"></i></div>
                 <input class="input_mail" name="height" id="height" type="number" value="{{$product->height}}" placeholder="Высота" required>
+            </div><div>
+                @foreach ($errors->get("height") as $message)
+                    <div class="error-message">{{$message}}</div>
+                @endforeach
             </div>
+
             <div class="input-wrap " style="flex-basis: 100%;">
                 <div class="input-ico"><i class="fas fa-envelope"></i></div>
                 <input class="input_mail" name="width" id="width" type="number" value="{{$product->width}}" placeholder="Ширина" required>
+            </div><div>
+                @foreach ($errors->get("width") as $message)
+                    <div class="error-message">{{$message}}</div>
+                @endforeach
             </div>
+
             <div class="input-wrap " style="flex-basis: 100%;">
                 <input type="file" name="pictures[]" multiple>
             </div>
