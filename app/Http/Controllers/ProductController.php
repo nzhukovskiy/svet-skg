@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -26,7 +28,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view("products_new");
+        return view("product_form", [
+            "product" => new Product()
+        ]);
     }
 
     /**
@@ -38,8 +42,20 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $product = new Product($request->all());
+        if ($request->hasfile('pictures')) {
+            var_dump($request->file("pictures"));
+            foreach ($request->file("pictures") as $image) {
+                echo "Hello";
+                $newImage = new Image();
+                $newImage->name =  uniqid() . $image->getClientOriginalName();
+                Storage::disk('local')->put("22121.txt", "content");
+                $product->images()->save($newImage);
+            }
+        }
+
         $product->save();
-        return redirect()->route("products.show", ["product" => $product->id]);
+        //var_dump($request->pictures);
+        //return redirect()->route("products.show", ["product" => $product->id]);
     }
 
     /**
@@ -63,7 +79,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view("product_form", [
+            "product" => Product::findOrFail($id)
+        ]);
     }
 
     /**
@@ -75,7 +93,10 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->update($request->all());
+        $product->save();
+        return redirect()->route("products.show", ["product" => $product->id]);
     }
 
     /**
@@ -86,6 +107,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->delete();
+        return redirect()->route("admin_panel");
     }
 }
