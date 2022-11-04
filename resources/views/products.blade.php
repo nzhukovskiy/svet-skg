@@ -3,7 +3,7 @@
 <header>
     <nav class="nav" style="background: white !important">
         <div class="wrap">
-            <div class="logo" style="color: #515562 !important;display: flex;"><div><a href='./index.html'><i class="fa fa-arrow-left" style="font-size:16px; padding-right: 25px;" ></i></a>	</div>	<span>SVE</span>T-SKG</div>
+            <div class="logo" style="color: #515562 !important;display: flex;"><div><a href='{{route("home")}}'><i class="fa fa-arrow-left" style="font-size:16px; padding-right: 25px;" ></i></a>	</div>	<span>SVE</span>T-SKG</div>
             <div class="toggle">
                 <div class="toggle_nav">
                     <div></div>
@@ -13,12 +13,12 @@
             </div>
             <div class="links" style="color: #2c3e50 !important">
                 <div class="links_wrap">
-                    <hr><a class=" link" href="./index.html" style="color: #515562;" >Главная</a>
-                    <a class=" link" href="./index.html#about" style="color: #515562;">О нас</a>
-                    <a class=" link" href="./index.html#products" style="color: #515562;">Продукция</a>
-                    <a class=" link" href="./index.html#work" style="color: #515562;">Работы</a>
-                    <a class=" link" href="./index.html#service" style="color: #515562;">Возможности</a>
-                    <a class=" link" href="./index.html#contact" style="color: #515562;">Связаться</a>
+                    <hr><a class=" link" href="{{route("home")}}" style="color: #515562;" >Главная</a>
+                    <a class=" link" href="{{route("about_us")}}" style="color: #515562;">О нас</a>
+                    <a class=" link" href="{{url("products")}}" style="color: #515562;">Продукция</a>
+                    <a class=" link" href="{{route("home")}}#work" style="color: #515562;">Работы</a>
+                    <a class=" link" href="{{route("home")}}#service" style="color: #515562;">Возможности</a>
+                    <a class=" link" href="{{route("home")}}#contact" style="color: #515562;">Связаться</a>
                 </div>
             </div>
         </div>
@@ -36,6 +36,21 @@
         <div class="search-icon"><i class="fas fa-search"></i></div>
     </div>
     <div class="products-items-grid">
+        @foreach($products as $product)
+            <div class="product_col products-items-grid_col">
+                <a href="{{route("products.show", ["product" => $product->id])}}" class="products-items-grid_col_wrap">
+
+                    <div class="product_img"><img src="{{ Vite::asset('resources/images/products/1.jpg') }}"></div>
+                    <div class="product_title title">{{$product->name}}</div>
+                    <div class="product_text">
+                        {{$product->description}}
+                    </div>
+                </a>
+            </div>
+        @endforeach
+    </div>
+
+    <!--<div class="products-items-grid">
         <div class="product_col products-items-grid_col">
             <a href="./product.html" class="products-items-grid_col_wrap">
 
@@ -132,7 +147,7 @@
             </a>
         </div>
 
-    </div>
+    </div>-->
     <div class="pagination">
         <div class="pagination-item selected">1</div>
         <div class="pagination-item">2</div>

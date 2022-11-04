@@ -13,12 +13,12 @@
             </div>
             <div class="links" style="color: #2c3e50 !important">
                 <div class="links_wrap">
-                    <hr><a class=" link" href="./index.html" style="color: #515562;" >Главная</a>
-                    <a class=" link" href="./index.html#about" style="color: #515562;">О нас</a>
-                    <a class=" link" href="./index.html#products" style="color: #515562;">Продукция</a>
-                    <a class=" link" href="./index.html#work" style="color: #515562;">Работы</a>
-                    <a class=" link" href="./index.html#service" style="color: #515562;">Возможности</a>
-                    <a class=" link" href="./index.html#contact" style="color: #515562;">Связаться</a>
+                    <hr><a class=" link" href="{{route("home")}}" style="color: #515562;" >Главная</a>
+                    <a class=" link" href="{{route("about_us")}}" style="color: #515562;">О нас</a>
+                    <a class=" link" href="{{url("products")}}" style="color: #515562;">Продукция</a>
+                    <a class=" link" href="{{route("home")}}#work" style="color: #515562;">Работы</a>
+                    <a class=" link" href="{{route("home")}}#service" style="color: #515562;">Возможности</a>
+                    <a class=" link" href="{{route("home")}}#contact" style="color: #515562;">Связаться</a>
                 </div>
             </div>
         </div>

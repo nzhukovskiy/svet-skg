@@ -12,6 +12,7 @@
         <link rel="apple-touch-icon" href=../title.png">
 
         <link rel="icon" href="{{ Vite::asset('resources/images/title.png') }}">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
     </head>
     <body style="min-height: 100vh; display: flex; flex-direction: column;" id="home">

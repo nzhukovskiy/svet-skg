@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/about_us', [HomeController::class, 'about_us']);
+Route::get('/', [HomeController::class, 'index'])->name("home");
+Route::get('/about_us', [HomeController::class, 'about_us'])->name("about_us");
 Route::resource('photos', PhotoController::class);
 Route::resource('products', ProductController::class);

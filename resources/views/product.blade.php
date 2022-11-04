@@ -3,7 +3,7 @@
 <header>
     <nav class="nav" style="background: white !important">
         <div class="wrap">
-            <div class="logo" style="color: #515562 !important;display: flex;"><div><a href='./index.html'><i class="fa fa-arrow-left" style="font-size:16px; padding-right: 25px;" ></i></a>	</div>	<span>SVE</span>T-SKG</div>
+            <div class="logo" style="color: #515562 !important;display: flex;"><div><a href='{{url("products")}}'><i class="fa fa-arrow-left" style="font-size:16px; padding-right: 25px;" ></i></a>	</div>	<span>SVE</span>T-SKG</div>
             <div class="toggle">
                 <div class="toggle_nav">
                     <div></div>
@@ -13,12 +13,12 @@
             </div>
             <div class="links" style="color: #2c3e50 !important">
                 <div class="links_wrap">
-                    <hr><a class=" link" href="./index.html" style="color: #515562;" >Главная</a>
-                    <a class=" link" href="./index.html#about" style="color: #515562;">О нас</a>
-                    <a class=" link" href="./index.html#products" style="color: #515562;">Продукция</a>
-                    <a class=" link" href="./index.html#work" style="color: #515562;">Работы</a>
-                    <a class=" link" href="./index.html#service" style="color: #515562;">Возможности</a>
-                    <a class=" link" href="./index.html#contact" style="color: #515562;">Связаться</a>
+                    <hr><a class=" link" href="{{route("home")}}" style="color: #515562;" >Главная</a>
+                    <a class=" link" href="{{route("about_us")}}" style="color: #515562;">О нас</a>
+                    <a class=" link" href="{{url("products")}}" style="color: #515562;">Продукция</a>
+                    <a class=" link" href="{{route("home")}}#work" style="color: #515562;">Работы</a>
+                    <a class=" link" href="{{route("home")}}#service" style="color: #515562;">Возможности</a>
+                    <a class=" link" href="{{route("home")}}#contact" style="color: #515562;">Связаться</a>
                 </div>
             </div>
         </div>
@@ -26,7 +26,7 @@
 </header>
 <div class="wrap" style="margin-top: 60px;">
     <div>
-        <a href='/products'>
+        <a href='{{url("products")}}'>
         </a>
     </div>
     <div class="desc">
@@ -49,61 +49,61 @@
         </div>
         <div class="desc_block desc_text">
             <div class="product_text">
-                <h1>AVENUE <span style="color: #00bfd3">K-50</span></h1>
+                <h1>{{$product->name}}</h1>
                 <h3 class="product_text__head">
                     Общие характеристики
                 </h3>
                 <div class="product_text__spec">
-                    <span>Мощность Вт </span> <span>50</span>
+                    <span>Мощность Вт </span> <span>{{$product->power}}</span>
                 </div>
                 <div class="product_text__spec">
-                    <span>Кол-во светодиодов</span>  <span>48</span>
+                    <span>Кол-во светодиодов</span>  <span>{{$product->leds_number}}</span>
                 </div class="product_text__spec">
                 <div class="product_text__spec">
-                    <span>Способ крепления</span> <span>консоль 56мм</span>
+                    <span>Способ крепления</span> <span>{{$product->mounting_method}}</span>
                 </div>
                 <h3 class="product_text__head">
                     Световые характеристики
                 </h3>
                 <div class="product_text__spec">
-                    <span>Пульсация</span> <span>< 1%</span>
+                    <span>Пульсация</span> <span>{{$product->ripple}}</span>
                 </div class="product_text__spec">
                 <div class="product_text__spec">
-                    <span>Цветовая температура</span> <span>K - 5000</span>
+                    <span>Цветовая температура</span> <span>{{$product->color_temperature}}</span>
                 </div>
                 <div class="product_text__spec">
-                    <span>Световой поток</span> <span>7 056 лм</span>
+                    <span>Световой поток</span> <span>{{$product->light_flow}}</span>
                 </div class="product_text__spec">
                 <div class="product_text__spec">
-                    <span title="Количественная мера способности источника света верно отображать цвета освещаемых объектов в сравнении с идеальным или естественным. У качественного света для жилых помещений, Ra должен быть не менее 70-80. Наивысшее значение, Ra=100, соответствует идеальной естественной цветопередаче при солнечном свете.">Индекс цветопередачи<sup>?</sup></span> <span>CRI-70</span>
+                    <span title="Количественная мера способности источника света верно отображать цвета освещаемых объектов в сравнении с идеальным или естественным. У качественного света для жилых помещений, Ra должен быть не менее 70-80. Наивысшее значение, Ra=100, соответствует идеальной естественной цветопередаче при солнечном свете.">Индекс цветопередачи<sup>?</sup></span> <span>{{$product->color_rendering_index}}</span>
                 </div>
                 <h3 class="product_text__head">
                     Эксплуатациионные характеристики
                 </h3>
                 <div class="product_text__spec">
-                    <span title="Степень защиты от пыли и влаги">Степень защиты светильника<sup>?</sup></span> <span>IP67</span>
+                    <span title="Степень защиты от пыли и влаги">Степень защиты светильника<sup>?</sup></span> <span>{{$product->protection_class}}</span>
                 </div>
 
                 <div class="product_text__spec">
-                    <span>Температура эксплуатации</span> <span>-40 +60</span>
+                    <span>Температура эксплуатации</span> <span>{{$product->operating_temperature}}</span>
                 </div>
                 <div class="product_text__spec">
-                    <span>Напряжение питания</span>  <span>176-264В</span>
+                    <span>Напряжение питания</span>  <span>{{$product->suppy_voltage}}</span>
                 </div>
                 <div class="product_text__spec">
-                    <span>Гарантия</span> <span>36 месяцев</span>
+                    <span>Гарантия</span> <span>{{$product->guarantee}}</span>
                 </div>
                 <div class="product_text__spec">
                     Габаритные размеры:
                 </div>
                 <div class="product_text__spec">
-                    <span>Длина</span> <span>325мм</span>
+                    <span>Длина</span> <span>{{$product->length}} мм</span>
                 </div>
                 <div class="product_text__spec">
-                    <span>Ширина</span> <span>145мм</span>
+                    <span>Ширина</span> <span>{{$product->width}} мм</span>
                 </div>
                 <div class="product_text__spec">
-                    <span>Высота</span>   <span>140мм</span>
+                    <span>Высота</span>   <span>{{$product->height}} мм</span>
                 </div>
 
             </div>

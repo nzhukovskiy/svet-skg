@@ -13,7 +13,7 @@
             </div>
             <div class="links">
                 <div class="links_wrap">
-                    <hr><a class="js-link link tooltip" href="#home">Главная</a>
+                    <hr><a class="js-link link tooltip" href="{{url("home")}}">Главная</a>
                     <a class="js-link link" href="#about">О нас</a>
                     <a class="js-link link" href="#products">Продукция</a>
                     <a class="js-link link" href="#work">Работы</a>
@@ -95,7 +95,7 @@
         <div class="about_col">
             <h2>Почему мы вас заинтересуем?</h2>
             <div class="about_text  " >Наши специалиссты обладают наиболее полными знаниями в сфере производства и эксплуатации светодиодных светильников любых конфигураций.</div>
-            <a class="btn btn-active  fadeInUp" href="./about_us.html" >О нашей компании</a>
+            <a class="btn btn-active  fadeInUp" href="{{url("about_us")}}" >О нашей компании</a>
         </div>
         <div class="about_col">
             <div class="accordeon_item accordeon_active  " >
@@ -123,7 +123,22 @@
             <div class="section_title_text">Ознакомьтесь с качественной, энергоэффективной и яркой продукцией.</div>
         </div>
         <div class="products-items-grid inverse-wrap">
-            <div class="product_col products-items-grid_col">
+            @foreach($products as $product)
+                <div class="product_col products-items-grid_col">
+                    <a href="{{route("products.show", ["product" => $product->id])}}" class="products-items-grid_col_wrap">
+
+                        <div class="product_img"><img src="{{ Vite::asset('resources/images/products/3.jpg') }}"></div>
+                        <div class="product_title title">{{$product->name}}</div>
+                        <div class="bage bage-accent bage-right-top">
+                            Лучший выбор
+                        </div>
+                        <div class="product_text">
+                            {{$product->description}}
+                        </div>
+                    </a>
+                </div>
+            @endforeach
+            <!--<div class="product_col products-items-grid_col">
                 <a href="./product.html" class="products-items-grid_col_wrap">
 
                     <div class="product_img"><img src="{{ Vite::asset('resources/images/products/3.jpg') }}"></div>
@@ -161,10 +176,10 @@
                         Мощность <span>200ватт</span>
                     </div>
                 </a>
-            </div>
+            </div>-->
         </div>
         <div style ="font-size: 20px;">
-            <a href="./products.html" class='btn btn-active' style='background: #00bfd3; border: none'>
+            <a href="{{url("products")}}" class='btn btn-active' style='background: #00bfd3; border: none'>
                 Просмотреть каталог
             </a>
         </div>
@@ -192,7 +207,7 @@
 <section style="background-color: #f9f9f9; padding: 0 0 10px;">
     <div class="wrap">
         <div style ="font-size: 20px;">
-            <a href="./photos.html" class='btn btn-active' style='background: #00bfd3; border: none'>
+            <a href="{{url("photos")}}" class='btn btn-active' style='background: #00bfd3; border: none'>
                 Перейти к галерее
             </a>
         </div>
