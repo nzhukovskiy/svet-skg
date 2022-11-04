@@ -42,18 +42,20 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $product = new Product($request->all());
-        if ($request->hasfile('pictures')) {
-            var_dump($request->file("pictures"));
-            foreach ($request->file("pictures") as $image) {
-                echo "Hello";
-                $newImage = new Image();
-                $newImage->name =  uniqid() . $image->getClientOriginalName();
-                Storage::disk('local')->put("22121.txt", "content");
-                $product->images()->save($newImage);
-            }
-        }
+
+
 
         $product->save();
+        $files = $request->file("pictures");
+        //var_dump($request->file("pictures"));
+        foreach ($files as $image) {
+            $newImage = new Image();
+            $newImage->name = uniqid() . $image->getClientOriginalName();
+            Storage::disk('public')->putFileAs("", $image, $newImage->name);
+            //Storage::disk('local')->put($newImage->name, $image);
+            $newImage->product_id = $product->id;
+            $product->images()->save($newImage);
+        }
         //var_dump($request->pictures);
         //return redirect()->route("products.show", ["product" => $product->id]);
     }

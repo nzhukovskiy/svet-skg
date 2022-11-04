@@ -37,13 +37,16 @@
                     Лучший выбор
                 </div>
                 <div style="position: absolute;" class="desc_loupe"></div>
-                <img src="../img/products/1.jpg" alt="" class="desc_slider_img desc_show_img" style="transition: opacity 0.4s linear">
+                <img src="{{Storage::url($product->images[0]->name)}}" alt="" class="desc_slider_img desc_show_img" style="transition: opacity 0.4s linear">
             </div>
             <div class="desc_preview">
-                <div class="desc_preview_image_wrap" style="background-image: url('../img/products/1.jpg'); cursor: pointer; border-color: #00bfd3;" data-href="../img/products/1.jpg"></div>
+                <!--<div class="desc_preview_image_wrap" style="background-image: url('../img/products/1.jpg'); cursor: pointer; border-color: #00bfd3;" data-href="../img/products/1.jpg"></div>
                 <div class="desc_preview_image_wrap" style="background-image: url('../img/products/4.jpg'); cursor: pointer;" data-href="../img/products/4.jpg"></div>
                 <div class="desc_preview_image_wrap" style="background-image: url('../img/products/5.jpg'); cursor: pointer;" data-href="../img/products/5.jpg"></div>
-                <div class="desc_preview_image_wrap" style="background-image: url('../img/products/6.jpg'); cursor: pointer;" data-href="../img/products/6.jpg"></div>
+                <div class="desc_preview_image_wrap" style="background-image: url('../img/products/6.jpg'); cursor: pointer;" data-href="../img/products/6.jpg"></div>-->
+                @foreach($product->images as $image)
+                    <div class="desc_preview_image_wrap" style="background-image: url({{Storage::url($image->name)}}); cursor: pointer; border-color: #00bfd3;" data-href="{{Storage::url($image->name)}}"></div>
+                @endforeach
 
             </div>
         </div>
